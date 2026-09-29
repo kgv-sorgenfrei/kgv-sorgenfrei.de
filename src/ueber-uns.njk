@@ -217,13 +217,13 @@ layout: layouts/page.njk
 
 <h2>Galerie</h2>
 <p>
-  Vom Eingang an der Wilhelmstraße über das Feuchtbiotop bis zum Vereinsheim: Ein kleiner Rundgang durch unsere
-  Gartenanlage zu jeder Jahreszeit und bei jedem Vereinsfest. Ein Klick auf ein Bild öffnet die Großansicht.
+  Von den Wegen der Anlage über Bienenstöcke und Insektenhotel bis zum Feuchtbiotop: Ein kleiner Rundgang durch
+  unsere Gartenanlage. Ein Klick auf ein Bild öffnet die Großansicht.
 </p>
 <div class="not-prose mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
   {% for photo in galerie %}
   <button type="button" class="group block overflow-hidden rounded-sm" data-lightbox-trigger>
-    {% image photo.src, photo.alt, "aspect-square w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-105", "(min-width: 1024px) 25vw, 50vw" %}
+    {% image photo.src, photo.alt, "aspect-square w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-105 " ~ (photo.position or "object-center"), "(min-width: 1024px) 25vw, 50vw" %}
   </button>
   {% endfor %}
 </div>

@@ -12,8 +12,10 @@ layout: layouts/page.njk
   <span aria-current="page">Aufgeräumte Gärten für den Winter</span>
 </nav>
 
-<div class="not-prose float-none mb-6 overflow-hidden rounded-sm sm:float-right sm:ml-8 sm:w-80">
-  {% image "fachberatung/totholzhaufen.jpg", "Totholzhaufen als Unterschlupf für Tiere im KGV Sorgenfrei", "w-full object-cover", "(min-width: 640px) 320px, 100vw" %}
+<div class="not-prose float-none mb-6 sm:float-right sm:ml-8 sm:w-80">
+  <button type="button" class="group block overflow-hidden rounded-sm" data-lightbox-trigger>
+    {% image "fachberatung/totholzhaufen.jpg", "Totholzhaufen als Unterschlupf für Tiere im KGV Sorgenfrei", "w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-105", "(min-width: 640px) 320px, 100vw" %}
+  </button>
 </div>
 
 <p>
@@ -32,10 +34,6 @@ layout: layouts/page.njk
   </p>
 </div>
 
-<div class="not-prose float-none mb-6 overflow-hidden rounded-sm sm:float-left sm:mr-8 sm:w-80">
-  {% image "fachberatung/wellness-oase-bienen.jpg", "Schild „Das ist kein unordentlicher Garten, sondern eine 5-Sterne Wellness-Oase für Bienen“ in einer Parzelle", "w-full object-cover", "(min-width: 640px) 320px, 100vw" %}
-</div>
-
 <h2>Unterschlupf für Tiere schaffen</h2>
 <p>
   Zum Schutz der Tiere lässt sich aktiv einiges beitragen: Igelhäuschen oder Totholzhaufen bieten Verstecke für den
@@ -51,8 +49,10 @@ layout: layouts/page.njk
   die Stauden lebenswichtig – sie sollten deshalb jetzt noch nicht geschnitten werden, sondern erst im Frühjahr.
 </p>
 
-<div class="not-prose float-none mb-6 mt-2 overflow-hidden rounded-sm sm:float-right sm:ml-8 sm:w-72">
-  {% image "fachberatung/igel.jpg", "Igel auf Nahrungssuche im Herbstlaub einer Parzelle", "w-full object-cover", "(min-width: 640px) 288px, 100vw" %}
+<div class="not-prose float-none mb-6 mt-2 sm:float-right sm:ml-8 sm:w-72">
+  <button type="button" class="group block overflow-hidden rounded-sm" data-lightbox-trigger>
+    {% image "fachberatung/igel.jpg", "Igel auf Nahrungssuche im Herbstlaub einer Parzelle", "w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-105", "(min-width: 640px) 288px, 100vw" %}
+  </button>
 </div>
 
 <h2>Frostempfindliche Pflanzen schützen</h2>
@@ -74,6 +74,12 @@ layout: layouts/page.njk
   kann jetzt noch ausgesät, Jungpflanzen von Grün- oder Rosenkohl können noch gesetzt werden.
 </p>
 
+<div class="not-prose float-none mb-6 mt-2 sm:float-left sm:mr-8 sm:w-72">
+  <button type="button" class="group block overflow-hidden rounded-sm" data-lightbox-trigger>
+    {% image "fachberatung/apfelbaum-weissanstrich.jpg", "Apfelbaum mit weiß gestrichenem Stamm vor einer Gartenlaube, im Hintergrund ein Förderturm", "w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-105", "(min-width: 640px) 288px, 100vw" %}
+  </button>
+</div>
+
 <h2>Bäume weiß anstreichen</h2>
 <p>
   Bäume schützt man mit einem Weißanstrich – der hat gleich mehrere Funktionen. Bei starken
@@ -83,7 +89,7 @@ layout: layouts/page.njk
   wie ein natürlicher Dünger.
 </p>
 
-<p class="mt-8 text-sm text-coal-500">
+<p class="clear-both mt-8 text-sm text-coal-500">
   Quelle: Interview mit unserem 1.&nbsp;Vorsitzenden Hans-Peter Müller und unserer Gartenfachberaterin Natascha
   Tomlik, erschienen als „Bereit für den Winter“ auf inherne.net (2024).
 </p>

@@ -141,7 +141,7 @@
       if (pictureImg) {
         const picture = pictureImg.closest("picture");
         const img = document.createElement("img");
-        img.className = "max-h-full max-w-full rounded-sm object-contain";
+        img.className = "max-h-[calc(100dvh-4rem)] max-w-full rounded-sm object-contain";
         img.src = (picture && widestSrcsetUrl(picture)) || pictureImg.currentSrc || pictureImg.src;
         img.alt = pictureImg.alt || "";
         open(img, pictureImg.alt);
@@ -152,7 +152,7 @@
       if (svg) {
         const title = svg.querySelector("title");
         const wrapper = document.createElement("div");
-        wrapper.className = "max-h-full max-w-full overflow-auto rounded-sm bg-white p-4";
+        wrapper.className = "max-h-[calc(100dvh-4rem)] max-w-full overflow-auto rounded-sm bg-white p-4";
         wrapper.appendChild(cloneSvgForLightbox(svg));
         open(wrapper, trigger.getAttribute("data-caption") || (title && title.textContent) || "");
       }
