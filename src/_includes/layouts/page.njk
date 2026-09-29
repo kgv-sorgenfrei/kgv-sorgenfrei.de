@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+---
+<header class="bg-leaf-800 py-14 text-white sm:py-20">
+  <div class="container-page">
+    {% if eyebrow %}<p class="eyebrow text-sun-300">{{ eyebrow }}</p>{% endif %}
+    <h1 class="mt-2 text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">{{ title }}</h1>
+    {% if lead %}<p class="mt-4 max-w-2xl text-lg text-leaf-50">{{ lead }}</p>{% endif %}
+  </div>
+</header>
+
+<div class="container-page section prose-page max-w-4xl">
+  {{ content | safe }}
+</div>

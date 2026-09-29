@@ -1,0 +1,66 @@
+---
+title: "Termine & Ankündigungen"
+eyebrow: "Vereinsleben"
+lead: "Vom Frühschoppen bis zum Sommerfest – bei uns ist das ganze Jahr über etwas los."
+description: "Aktuelle Termine und Veranstaltungen des KGV Sorgenfrei e.V.: Heckenschnitt, Café der Begegnung, Sommerfest, Halloween und mehr."
+layout: layouts/page.njk
+---
+
+<h2>Aktuelle Termine</h2>
+<ul class="not-prose mt-6 space-y-4">
+  {% for termin in termine %}
+  <li>
+    {% if termin.url %}<a href="{{ termin.url }}" class="card group flex gap-4 p-5 sm:gap-6">{% else %}<div class="card flex gap-4 p-5 sm:gap-6">{% endif %}
+      <div class="h-24 w-24 shrink-0 overflow-hidden rounded-sm">
+        {% image termin.image or "gallery/vereinsheim.jpg", termin.title, "h-full w-full object-cover transition-transform duration-300 group-hover:scale-105", "96px" %}
+      </div>
+      <div>
+        <p class="text-xs font-medium text-coal-400">{{ termin.dateLabel }}</p>
+        <h3 class="mt-1 text-base font-semibold text-coal-800">{{ termin.title }}</h3>
+        <p class="mt-1 text-sm text-coal-600">{{ termin.description }}</p>
+        {% if termin.url %}
+        <span class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-leaf-700">Mehr erfahren →</span>
+        {% endif %}
+      </div>
+    {% if termin.url %}</a>{% else %}</div>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<h2>Highlights</h2>
+<div class="not-prose mt-6 grid gap-4 sm:grid-cols-2">
+  {% for item in termine.highlights %}
+  <a href="{{ item.url }}" class="card rounded-sm group flex flex-col overflow-hidden">
+    <div class="aspect-video w-full overflow-hidden">
+      {% image item.image, item.title, "h-full w-full object-cover transition-transform duration-300 group-hover:scale-105", "(min-width: 640px) 50vw, 100vw" %}
+    </div>
+    <div class="flex flex-1 flex-col p-6">
+      <h3 class="mt-0 text-lg font-semibold text-leaf-800">{{ item.title }}</h3>
+      <p class="mt-2 text-sm text-coal-600">{{ item.description }}</p>
+      <span class="mt-auto self-start pt-4 inline-flex items-center gap-1 text-sm font-semibold text-leaf-700">Mehr erfahren →</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+<h2>Feste Größen im Vereinsjahr</h2>
+<p>Rund um das Vereinsheim spielt sich das Vereinsleben ab – über das Jahr verteilt feiern wir gemeinsam:</p>
+<ul class="not-prose mt-4 flex flex-wrap gap-2">
+  {% for event in termine.recurring %}
+  <li class="rounded-sm bg-sun-100 px-4 py-2 text-sm font-medium text-coal-800">{{ event }}</li>
+  {% endfor %}
+</ul>
+<p class="mt-6">
+  Für alle Generationen ist etwas dabei. Gearbeitet wird aber auch: Im Auftrag des Kleingärtnervereins finden
+  regelmäßig Workshops und Fachberatungen statt – Termine dazu findest du auf unserer
+  <a href="/fachberatung/">Fachberatungs-Seite</a>.
+</p>
+
+<div class="not-prose mt-10 rounded-sm bg-leaf-800 p-8 text-white">
+  <h2 class="mt-0 text-2xl text-white">Immer aktuell informiert</h2>
+  <p class="mt-3 text-leaf-50">
+    Über unsere WhatsApp-Community „Sorgenfrei-Community“ informieren wir schnell und einfach über Geschehnisse im
+    Verein. Fragen dazu beantworten wir gerne per Mail an
+    <a class="text-sun-300 underline hover:text-sun-200" href="mailto:{{ site.whatsappEmail }}">{{ site.whatsappEmail }}</a>.
+  </p>
+</div>

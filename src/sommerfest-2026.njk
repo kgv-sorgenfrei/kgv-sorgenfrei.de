@@ -1,0 +1,55 @@
+---
+title: "Sommerfest 2026"
+eyebrow: "Vereinsleben"
+lead: "Zwei Tage Party, Triathlon und Tombola – unser Sommerfest 2026 im Rückblick."
+description: "Rückblick auf das Sommerfest 2026 des KGV Sorgenfrei e.V.: Live-Musik, Sorgenfrei-Triathlon, Tombola und eine rundum gelungene Veranstaltung."
+layout: layouts/page.njk
+---
+
+<nav aria-label="Breadcrumb" class="not-prose mb-6 flex flex-wrap items-center gap-1.5 text-sm text-coal-400">
+  <a href="/termine/" class="hover:text-coal-600">Termine</a>
+  <span aria-hidden="true">/</span>
+  <span aria-current="page">Sommerfest 2026</span>
+</nav>
+
+<div class="not-prose mb-8 overflow-hidden rounded-sm">
+  {% image "gallery/sommerfest-1.jpeg", "Stimmung beim Sommerfest 2026 im KGV Sorgenfrei", "aspect-video w-full object-cover", "(min-width: 1024px) 768px, 100vw" %}
+</div>
+
+<p>
+  Der erste Tag unseres Sommerfestes war eine sehr erfolgreiche Party: Live-Musik unter anderem von Xandra Hag und
+  Michael Kern sorgte für beste Stimmung, tatkräftig unterstützt von allen Helferinnen und Helfern. Außerdem freute
+  sich das Team Sorgenfrei über Medaillen für die Teilnahme am Stadtradeln.
+</p>
+<p>
+  Der zweite Tag stand ganz im Zeichen des Sorgenfrei-Triathlons – ein Spaß für Groß und Klein. Die teilnehmenden
+  Kinder waren alle Sieger und erhielten Preise. Die Pokale gingen an den KGV Löns Mühle (1. und 3. Platz) und den
+  KGV Erholung (2. Platz). Auch unsere große Tombola wurde aufgelöst und bescherte vielen Loskäuferinnen und
+  Loskäufern tolle Gewinne.
+</p>
+<p>
+  Am Ende waren sich alle einig: Es war eine rundum gelungene zweitägige Veranstaltung.
+</p>
+
+<h2>Fotos vom Sommerfest 2026</h2>
+<div class="not-prose mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+  {% set sommerfestFotos = [
+    { src: "gallery/sommerfest-2.jpeg", alt: "Gewinner der Tombola beim Sommerfest 2026" },
+    { src: "gallery/sommerfest-getraenkestand.jpeg", alt: "Getränkestand beim Sommerfest 2026" },
+    { src: "gallery/sommerfest-grillhuette.jpeg", alt: "Die bunt bemalte Grillhütte beim Sommerfest 2026" },
+    { src: "gallery/sommerfest-tombola.jpeg", alt: "Tombola-Stand beim Sommerfest 2026" },
+    { src: "gallery/sommerfest-team.jpeg", alt: "Helferinnen und Helfer beim Sommerfest 2026" },
+    { src: "gallery/sommerfest-festplatz.jpeg", alt: "Gäste an den Tischen auf dem Festplatz beim Sommerfest 2026" },
+    { src: "gallery/sommerfest-feenkostueme.jpeg", alt: "Zwei Kinder in Feenkostümen vor der Grillhütte beim Sommerfest 2026" },
+    { src: "gallery/sommerfest-getraenketeam.jpeg", alt: "Das Getränke-Team im Einsatz beim Sommerfest 2026" },
+    { src: "gallery/sommerfest-tanzflaeche.jpeg", alt: "Tanz auf der Tanzfläche bei Live-Musik am Abend des Sommerfestes 2026" },
+    { src: "gallery/sommerfest-triathlon-kinder.jpeg", alt: "Kinder erhalten ihre Preise beim Sorgenfrei-Triathlon 2026" },
+    { src: "gallery/sommerfest-spielstation.jpeg", alt: "Spielstation beim Sorgenfrei-Triathlon 2026" },
+    { src: "gallery/sommerfest-pokale.jpeg", alt: "Pokale für die Sieger des Sorgenfrei-Triathlons 2026" }
+  ] %}
+  {% for photo in sommerfestFotos %}
+  <button type="button" class="group block overflow-hidden rounded-sm" data-lightbox-trigger>
+    {% image photo.src, photo.alt, "aspect-square w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-105", "(min-width: 1024px) 25vw, 50vw" %}
+  </button>
+  {% endfor %}
+</div>

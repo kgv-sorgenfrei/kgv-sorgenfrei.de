@@ -1,0 +1,44 @@
+<footer class="relative overflow-hidden bg-coal-900 text-coal-100">
+  <div class="container-page relative grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <a href="/" class="mb-4 inline-flex items-center gap-3">
+        <img src="/assets/images/logo.svg" alt="{{ site.fullName }} – Logo" class="h-14 w-auto brightness-125">
+      </a>
+      <p class="text-sm leading-relaxed text-coal-300">{{ site.fullName }}</p>
+      <p class="mt-2 text-sm italic text-leaf-300">„{{ site.slogan }}“</p>
+    </div>
+
+    <div>
+      <h2 class="font-display text-base font-semibold text-white">Adresse</h2>
+      <address class="mt-3 not-italic text-sm leading-relaxed text-coal-300">
+        {{ site.fullName }}<br>
+        {% for line in site.address.lines %}{{ line }}<br>{% endfor %}
+      </address>
+    </div>
+
+    <div>
+      <h2 class="font-display text-base font-semibold text-white">Kontakt</h2>
+      <ul class="mt-3 space-y-2 text-sm text-coal-300">
+        <li><a class="hover:text-sun-300" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li><a class="hover:text-sun-300" href="mailto:{{ site.vorstandEmail }}">{{ site.vorstandEmail }}</a></li>
+        <li><a class="hover:text-sun-300" href="tel:{{ site.phoneChair | replace(' ', '') }}">{{ site.phoneChair }}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-display text-base font-semibold text-white">Service</h2>
+      <ul class="mt-3 space-y-2 text-sm text-coal-300">
+        {% for item in site.footerNav %}
+        <li><a class="hover:text-sun-300" href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10 py-6">
+    <div class="container-page flex flex-col items-center justify-between gap-2 text-xs text-coal-400 sm:flex-row">
+      <p>© {% year %} {{ site.fullName }}</p>
+      <p>Mitten im Ruhrgebiet – direkt neben der ehemaligen Zeche Pluto in Herne-Wanne</p>
+    </div>
+  </div>
+</footer>

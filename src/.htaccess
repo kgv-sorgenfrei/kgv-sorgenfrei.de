@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Geschuetzter Bereich"
+AuthUserFile /www/htdocs/w0204bc9/demo.laubencloud.de/.htpasswd
+Require valid-user

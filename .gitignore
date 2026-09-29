@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output & caches
+_site/
+.cache/
+
+# Generated CSS (built from src/assets/css/tailwind.css)
+src/assets/css/style.css
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editors & IDEs
+.idea/
+.vscode/
+*.swp
+*~
+
+# Claude Code: personal settings (launch.json stays shared)
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db

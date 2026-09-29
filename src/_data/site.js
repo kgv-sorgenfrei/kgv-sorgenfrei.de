@@ -1,0 +1,52 @@
+module.exports = {
+  name: "KGV Sorgenfrei",
+  fullName: "Kleingärtnerverein Sorgenfrei Wanne-Eickel e.V.",
+  slogan: "Die Natur in Deinen Händen",
+  founded: 1915,
+  url: "https://www.kgv-sorgenfrei.de",
+  description:
+    "Der Kleingärtnerverein Sorgenfrei e.V. in Herne-Wanne: ökologisches Gärtnern seit 1915, eigener Honig, Solaranlage auf dem Vereinsheim und der Projektgarten Sanssouci – mitten im Ruhrgebiet, direkt neben der ehemaligen Zeche Pluto.",
+  address: {
+    lines: ["Wilhelmstr. 80", "44649 Herne"],
+    district: "Stadtbezirk Wanne, Ortsteil Bickern",
+    mapsQuery: "Wilhelmstr. 80, 44649 Herne",
+    lat: 51.5318291,
+    lon: 7.1463126,
+  },
+  email: "info@kgv-sorgenfrei.de",
+  vorstandEmail: "vorstand@kgv-sorgenfrei.de",
+  whatsappEmail: "whatsapp@kgv-sorgenfrei.de",
+  phoneChair: "0151 22021059",
+  register: {
+    court: "Amtsgericht Bochum",
+    number: "VR 30215",
+  },
+  stats: {
+    area: "3,20 ha",
+    areaGross: "31.958 m²",
+    areaNet: "29.553 m²",
+    plots: 86,
+    plotsFounding: 112,
+    members: "86 aktive Mitglieder",
+  },
+  openingHours: [
+    { label: "Frühschoppen", time: "Mittwochs & Sonntags, 11:00 – 13:00 Uhr" },
+    { label: "Geselliger Abend", time: "Freitags, 18:00 – 21:00 Uhr" },
+    { label: "Vereinsbüro", time: "Freitags, 18:00 – 20:00 Uhr besetzt" },
+  ],
+  nav: [
+    { title: "Start", url: "/" },
+    { title: "Über uns", url: "/ueber-uns/" },
+    { title: "Honig", url: "/honig/" },
+    { title: "Projektgarten Sanssouci", url: "/projektgarten-sanssouci/" },
+    { title: "Termine", url: "/termine/" },
+    { title: "Fachberatung", url: "/fachberatung/" },
+    { title: "Kontakt", url: "/kontakt/" },
+  ],
+  footerNav: [
+    { title: "Impressum", url: "/impressum/" },
+    { title: "Datenschutz", url: "/datenschutz/" },
+    { title: "Vorstand", url: "/kontakt/#vorstand" },
+    { title: "Kontakt", url: "/kontakt/" },
+  ],
+};

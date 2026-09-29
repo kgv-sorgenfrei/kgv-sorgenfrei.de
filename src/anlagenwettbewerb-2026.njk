@@ -1,0 +1,50 @@
+---
+title: "Anlagenwettbewerb 2026"
+eyebrow: "Vereinsleben"
+lead: "Die Fachberatung des Stadtverbandes hat unsere Anlage unter die Lupe genommen."
+description: "Rückblick auf die Begehung der Anlage Sorgenfrei im Rahmen des Anlagenwettbewerbs 2026 durch die Fachberatung des Stadtverbandes der Gartenfreunde Herne-Wanne e.V."
+layout: layouts/page.njk
+---
+
+<nav aria-label="Breadcrumb" class="not-prose mb-6 flex flex-wrap items-center gap-1.5 text-sm text-coal-400">
+  <a href="/termine/" class="hover:text-coal-600">Termine</a>
+  <span aria-hidden="true">/</span>
+  <span aria-current="page">Anlagenwettbewerb 2026</span>
+</nav>
+
+<div class="not-prose mb-8 overflow-hidden rounded-sm">
+  {% image "gallery/hauptweg.jpg", "Rundgang durch die Gartenanlage Sorgenfrei beim Anlagenwettbewerb", "aspect-video w-full object-cover", "(min-width: 1024px) 768px, 100vw" %}
+</div>
+
+<p>
+  Im Rahmen des Anlagenwettbewerbs hat die Fachberatung des Stadtverbandes der Gartenfreunde Herne-Wanne e.V. am
+  12.07.2026 unsere Gesamtanlage begutachtet.
+</p>
+<p>
+  Mehrere Vorstandsmitglieder des KGV Sorgenfrei führten die Vertreterinnen und Vertreter des Stadtverbandes in einem Rundgang
+  durch die Gartenanlage – vom Haupteingang an der Wilhelmstraße über das öffentliche Grün und das Gelände rund um
+  das Vereinsheim bis zum Biotop mit den Bienenvölkern.
+</p>
+
+<div class="not-prose float-none mb-6 mt-8 overflow-hidden rounded-sm sm:float-right sm:ml-8 sm:w-80">
+  {% image "gallery/bienenvoelker-biotop.jpg", "Biotop mit Bienenvölkern am KGV Sorgenfrei", "w-full object-cover", "(min-width: 640px) 320px, 100vw" %}
+</div>
+<p>
+  Ein fester Programmpunkt der Begehung war auch das Biotop mit den Bienenvölkern – ein Ort, den auch Besucherinnen
+  und Besucher der Anlage jederzeit besuchen können.
+</p>
+
+<h2>Impressionen aus der Anlage</h2>
+<p>Ein paar Eindrücke von den Bereichen, die beim Rundgang begutachtet wurden:</p>
+<div class="not-prose mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+  {% set anlagenFotos = [
+    { src: "gallery/vereinsheim.jpg", alt: "Vereinsheim des KGV Sorgenfrei" },
+    { src: "gallery/parzelle.jpg", alt: "Parzelle in der Gartenanlage Sorgenfrei" },
+    { src: "gallery/fruehling.jpg", alt: "Öffentliches Grün in der Gartenanlage Sorgenfrei" }
+  ] %}
+  {% for photo in anlagenFotos %}
+  <button type="button" class="group block overflow-hidden rounded-sm" data-lightbox-trigger>
+    {% image photo.src, photo.alt, "aspect-square w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-105", "(min-width: 1024px) 33vw, 50vw" %}
+  </button>
+  {% endfor %}
+</div>

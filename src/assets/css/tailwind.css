@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Self-hosted variable fonts (no requests to Google at runtime) */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/inter-variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("/assets/fonts/fraunces-variable.woff2") format("woff2");
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-stone-50 text-coal-800 antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-leaf-800;
+  }
+  a {
+    @apply transition-colors;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 font-semibold shadow-sm transition-all duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-leaf-600 text-white hover:bg-leaf-700 hover:shadow-md;
+  }
+  .btn-secondary {
+    @apply btn bg-sun-400 text-coal-900 hover:bg-sun-300 hover:shadow-md;
+  }
+  .btn-outline {
+    @apply btn border-2 border-white text-white hover:bg-white hover:text-leaf-700;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .eyebrow {
+    @apply inline-block font-sans text-sm font-semibold uppercase tracking-widest text-leaf-600;
+  }
+
+  .card {
+    @apply rounded-sm bg-white shadow-sm ring-1 ring-coal-100 transition-shadow;
+  }
+
+  /* Only clickable cards (whole card is a link or lightbox trigger) get the hover lift */
+  a.card,
+  button.card {
+    @apply hover:shadow-lg;
+  }
+
+  .prose-page a:not([class*="btn"], .not-prose, .not-prose *) {
+    @apply text-leaf-700 underline decoration-leaf-300 underline-offset-2 hover:text-leaf-800;
+  }
+  .prose-page h2:not(:where(.not-prose, .not-prose *)) {
+    @apply mt-10 text-2xl sm:text-3xl;
+  }
+  .prose-page h3:not(:where(.not-prose, .not-prose *)) {
+    @apply mt-8 text-xl sm:text-2xl;
+  }
+  .prose-page p:not(:where(.not-prose, .not-prose *)) {
+    @apply mt-4 leading-relaxed text-coal-700;
+  }
+  .prose-page ul:not(:where(.not-prose, .not-prose *)) {
+    @apply mt-4 list-disc space-y-2 pl-6 text-coal-700;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-leaf-700 focus:px-4 focus:py-2 focus:text-white;
+  }
+}

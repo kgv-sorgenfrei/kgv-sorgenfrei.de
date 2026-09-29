@@ -1,0 +1,43 @@
+---
+title: "43. Herner Kleingarten-Wandertag"
+eyebrow: "Vereinsleben"
+lead: "Sorgenfrei tritt beim Wandertag des Stadtverbandes an – und bringt einen Pokal mit nach Hause."
+description: "Rückblick auf den 43. Herner Kleingarten-Wandertag am 05.07.2026 bei der KGV Grüne Oase: Sorgenfrei stellte die drittgrößte Gruppe und holte den Pokal für den dritten Platz."
+layout: layouts/page.njk
+---
+
+<nav aria-label="Breadcrumb" class="not-prose mb-6 flex flex-wrap items-center gap-1.5 text-sm text-coal-400">
+  <a href="/termine/" class="hover:text-coal-600">Termine</a>
+  <span aria-hidden="true">/</span>
+  <span aria-current="page">43. Herner Kleingarten-Wandertag</span>
+</nav>
+
+<div class="not-prose mb-8 overflow-hidden rounded-sm">
+  {% image "gallery/wandertag-43-banner.jpg", "Zelte und Banner „Kleingartenwandertag“ beim KGV Grüne Oase", "aspect-video w-full object-cover", "(min-width: 1024px) 768px, 100vw" %}
+</div>
+
+<p>
+  Am Sonntag, den 05.07.2026, fand wieder der Herner Kleingarten-Wandertag des Stadtverbandes der Gartenfreunde
+  Herne-Wanne e.V. statt – bereits zum 43. Mal. Start und Ziel war diesmal der KGV Grüne Oase.
+</p>
+<p>
+  Bei herrlichem Wetter hat sich auch der KGV Sorgenfrei wieder zahlreich beteiligt: Gemessen an der
+  Teilnehmerzahl stellte der Verein die drittgrößte Gruppe und wurde dafür bei der Siegerehrung mit dem Pokal für
+  den dritten Platz belohnt. Für das leibliche Wohl der Wanderinnen und Wanderer war ebenfalls gesorgt.
+</p>
+
+<h2>Impressionen vom Wandertag</h2>
+<div class="not-prose mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+  {% set wandertagFotos = [
+    { src: "gallery/wandertag-43-banner-hochkant.jpg", alt: "Banner „Kleingartenwandertag“ des Stadtverbandes der Gartenfreunde Herne-Wanne" },
+    { src: "gallery/wandertag-43-gruenes-dach.jpg", alt: "Wandergruppe vor dem Vereinsheim mit Gründach beim KGV Grüne Oase" },
+    { src: "gallery/wandertag-43-wanderweg.jpg", alt: "Wanderinnen und Wanderer auf dem schattigen Wanderweg" },
+    { src: "gallery/wandertag-43-pokal.jpg", alt: "Pokal für den dritten Platz des KGV Sorgenfrei" },
+    { src: "gallery/wandertag-43-siegerehrung.jpg", alt: "Siegerehrung mit den Pokalen der teilnehmenden Vereine" }
+  ] %}
+  {% for photo in wandertagFotos %}
+  <button type="button" class="group block overflow-hidden rounded-sm" data-lightbox-trigger>
+    {% image photo.src, photo.alt, "aspect-square w-full cursor-zoom-in object-cover transition-transform duration-300 group-hover:scale-105", "(min-width: 1024px) 33vw, 50vw" %}
+  </button>
+  {% endfor %}
+</div>

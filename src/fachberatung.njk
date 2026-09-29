@@ -1,0 +1,46 @@
+---
+title: "Fachberatung"
+eyebrow: "Wissen für den Garten"
+lead: "Workshops und spannende Gartenthemen von unserer Fachberatung."
+description: "Fachberatung des KGV Sorgenfrei e.V.: Workshops, Mischkultur-Tipps, der Leitfaden Bienen und Insekten sowie Phänologie im Klimawandel."
+layout: layouts/page.njk
+---
+
+<h2>Workshoptermine 2026</h2>
+<p>{{ fachberatung.workshops.intro }}</p>
+<ul class="not-prose mt-4 flex flex-wrap gap-x-2 gap-y-4">
+  {% for workshop in fachberatung.workshops.items %}
+  <li>
+    <span class="rounded-sm bg-leaf-50 px-4 py-2 text-sm font-medium text-leaf-800">{{ workshop.date }}</span>
+  </li>
+  {% endfor %}
+</ul>
+<p class="mt-4 text-sm text-coal-500">Weitere Informationen gibt es bei den <a href="/termine/">Terminen</a>.</p>
+
+<h2>Themen</h2>
+<div class="not-prose mt-6 grid gap-4 sm:grid-cols-2">
+  {% for topic in fachberatung.topics %}
+  <a href="{{ topic.url }}" class="card rounded-sm group flex flex-col overflow-hidden">
+    <div class="aspect-video w-full overflow-hidden">
+      {% image topic.image, topic.title, "h-full w-full object-cover transition-transform duration-300 group-hover:scale-105", "(min-width: 640px) 50vw, 100vw" %}
+    </div>
+    <div class="flex flex-1 flex-col p-6">
+      <h3 class="mt-0 text-lg font-semibold text-leaf-800">{{ topic.title }}</h3>
+      <p class="mt-2 text-sm text-coal-600">{{ topic.summary }}</p>
+      <span class="mt-auto self-start pt-4 inline-flex items-center gap-1 text-sm font-semibold text-leaf-700">Mehr erfahren →</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+<h2>Weiterführende Links</h2>
+<ul class="not-prose mt-6 space-y-4">
+  {% for link in fachberatung.links %}
+  <li>
+    <a href="{{ link.url }}" rel="noopener" class="card block p-5">
+      <span class="text-base font-semibold text-leaf-700 underline decoration-leaf-300 underline-offset-2">{{ link.title }}</span>
+      <span class="mt-1 block text-sm text-coal-600">{{ link.description }}</span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

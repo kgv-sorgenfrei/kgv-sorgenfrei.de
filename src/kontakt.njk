@@ -1,0 +1,97 @@
+---
+title: "Kontakt"
+eyebrow: "Wir freuen uns auf dich"
+lead: "Adresse, Öffnungszeiten und Ansprechpartner im KGV Sorgenfrei."
+description: "Kontakt und Adresse des KGV Sorgenfrei e.V. in Herne-Wanne, Öffnungszeiten des Vereinsheims sowie Namen und Rollen des Vorstands."
+layout: layouts/page.njk
+schema:
+  "@context": "https://schema.org"
+  "@type": "Organization"
+  "name": "Kleingärtnerverein Sorgenfrei Wanne-Eickel e.V."
+  "url": "https://www.kgv-sorgenfrei.de"
+  "email": "info@kgv-sorgenfrei.de"
+  "address":
+    "@type": "PostalAddress"
+    "streetAddress": "Wilhelmstr. 80"
+    "postalCode": "44649"
+    "addressLocality": "Herne"
+    "addressCountry": "DE"
+---
+
+<div class="not-prose grid gap-6 sm:grid-cols-2">
+  <div class="card p-6">
+    <h2 class="mt-0 text-xl text-leaf-800">Adresse</h2>
+    <address class="mt-3 not-italic leading-relaxed text-coal-700">
+      {{ site.fullName }}<br>
+      {% for line in site.address.lines %}{{ line }}<br>{% endfor %}
+    </address>
+    <a
+      class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-leaf-700 hover:text-leaf-800"
+      href="https://www.google.com/maps/search/?api=1&query={{ site.address.mapsQuery | urlencode }}"
+      rel="noopener"
+      target="_blank"
+    >Route planen →</a>
+  </div>
+
+  <div class="card p-6">
+    <h2 class="mt-0 text-xl text-leaf-800">Kontaktdaten</h2>
+    <ul class="mt-3 space-y-2 text-coal-700">
+      <li><span class="font-medium">1. Vorsitzender:</span> Hans-Peter Müller</li>
+      <li><span class="font-medium">Mobil:</span> <a class="text-leaf-700 hover:text-leaf-800" href="tel:{{ site.phoneChair | replace(' ', '') }}">{{ site.phoneChair }}</a></li>
+      <li><span class="font-medium">Vorstand:</span> <a class="text-leaf-700 hover:text-leaf-800" href="mailto:{{ site.vorstandEmail }}">{{ site.vorstandEmail }}</a></li>
+      <li><span class="font-medium">Allgemeine Anfragen:</span> <a class="text-leaf-700 hover:text-leaf-800" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2>Öffnungszeiten Vereinsheim</h2>
+<ul class="not-prose mt-4 grid gap-3 sm:grid-cols-3">
+  {% for slot in site.openingHours %}
+  <li class="card p-5">
+    <p class="font-semibold text-coal-800">{{ slot.label }}</p>
+    <p class="mt-1 text-sm text-coal-600">{{ slot.time }}</p>
+  </li>
+  {% endfor %}
+</ul>
+
+<h2 id="vorstand">Der Vorstand</h2>
+<div class="not-prose mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+  {% for member in vorstand %}
+  <div class="card flex flex-col items-center gap-3 p-5 text-center">
+    {% if member.photo %}
+    {% image member.photo, member.name, "h-24 w-24 rounded-sm object-cover", "96px" %}
+    {% else %}
+    <img src="/assets/images/vorstand-platzhalter.svg" alt="" class="h-24 w-24 rounded-sm object-cover" aria-hidden="true">
+    {% endif %}
+    <div>
+      <p class="font-semibold text-coal-800">{{ member.name }}</p>
+      <p class="mt-1 text-xs text-coal-400">{{ member.role }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="not-prose mt-10 flex flex-col items-center gap-6 rounded-sm bg-leaf-50 p-6 ring-1 ring-leaf-200 sm:flex-row sm:items-center sm:justify-between">
+  <div class="flex flex-col items-start gap-3">
+    <h2 class="text-2xl sm:text-3xl">WhatsApp-Community</h2>
+    <p class="leading-relaxed text-coal-700">
+      Über unsere „Sorgenfrei-Community“ bei WhatsApp informieren wir schnell und einfach über Geschehnisse im Verein.
+      Fragen dazu gerne per Mail an <a class="text-leaf-700 underline decoration-leaf-300 underline-offset-2 hover:text-leaf-800" href="mailto:{{ site.whatsappEmail }}">{{ site.whatsappEmail }}</a>.
+    </p>
+    <p class="text-sm text-coal-600">Community per Klick beitreten oder QR-Code mit dem Smartphone scannen.</p>
+    <a
+      class="btn-primary"
+      href="https://chat.whatsapp.com/EA1ajXiw7cCHjXQ2tesd4I"
+      rel="noopener"
+      target="_blank"
+    >WhatsApp-Community beitreten</a>
+  </div>
+  <img
+    src="/assets/images/whatsapp-community-qr.svg"
+    alt="QR-Code zum Beitritt der WhatsApp-Community des KGV Sorgenfrei"
+    width="160"
+    height="160"
+    class="h-40 w-40 shrink-0 rounded-sm bg-white p-2 ring-1 ring-leaf-200"
+    loading="lazy"
+  >
+</div>

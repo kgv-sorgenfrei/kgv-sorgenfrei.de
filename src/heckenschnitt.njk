@@ -1,0 +1,143 @@
+---
+title: "Heckenschnitt"
+eyebrow: "Vereinsleben"
+lead: "Vom 18. bis 26. September 2026 ist wieder Heckenschnitt-Zeit – so schneidest du richtig."
+description: "Frist, Maße und Anleitung für den Heckenschnitt im KGV Sorgenfrei: Termin 18.09.–26.09.2026, die richtige Schnittform mit Skizze und Hinweise zu Wildkräutern."
+layout: layouts/page.njk
+---
+
+<nav aria-label="Breadcrumb" class="not-prose mb-6 flex flex-wrap items-center gap-1.5 text-sm text-coal-400">
+  <a href="/termine/" class="hover:text-coal-600">Termine</a>
+  <span aria-hidden="true">/</span>
+  <span aria-current="page">Heckenschnitt</span>
+</nav>
+
+<p>
+  Unsere Hecken brauchen wieder ihren Pflegeschnitt. Bis zu diesem Termin sind die Hecken auf allen Parzellen
+  fachgerecht zu schneiden:
+</p>
+
+<div class="not-prose my-6 rounded-sm bg-sun-100 px-6 py-5">
+  <p class="text-xs font-semibold uppercase tracking-widest text-coal-500">Frist</p>
+  <p class="mt-1 text-xl font-semibold text-coal-900">Freitag, 18.09. bis Samstag, 26.09.2026</p>
+</div>
+
+<h2>So wird richtig geschnitten</h2>
+<div class="not-prose mt-6 grid gap-8 sm:grid-cols-2 sm:items-center">
+  <div>
+    <p class="text-coal-700">
+      Ganz wichtig ist der <strong>schräge Schnitt zur Verjüngung der Hecke nach oben</strong>, damit
+    </p>
+    <ul class="mt-4 list-disc space-y-2 pl-6 text-coal-700">
+      <li>die Wege wieder breiter werden,</li>
+      <li>die Hecke bis zum Boden begrünt bleiben kann und</li>
+      <li>beim Schnitt ein abdeckendes Blattgrün erhalten bleibt.</li>
+    </ul>
+    <p class="mt-4 text-coal-700">
+      Dabei darf nicht bis ins nackte Holz heruntergeschnitten werden. Wir bitten um Einhaltung der Abmessungen, um
+      die optimale Nutzung der Wege zu gewährleisten.
+    </p>
+  </div>
+  <div class="card p-6">
+    <button type="button" data-lightbox-trigger class="block w-full cursor-zoom-in" aria-label="Schema vergrößern">
+    <svg viewBox="0 0 460 360" class="h-auto w-full" role="img" aria-labelledby="hs-diagramm-title hs-diagramm-desc">
+      <title id="hs-diagramm-title">Schnittform der Hecke im Querschnitt</title>
+      <desc id="hs-diagramm-desc">
+        Trapezförmiger Querschnitt der Hecke: oben 25 cm breit, unten 30 cm breit, 65 cm hoch. Die Seiten laufen
+        schräg nach oben zusammen, damit die Hecke bis zum Boden begrünt bleibt.
+      </desc>
+
+      <defs>
+        <marker id="hs-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#525d5d" />
+        </marker>
+        <pattern id="hs-leaves" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(12)">
+          <rect width="18" height="18" fill="#52812d" />
+          <circle cx="4" cy="4" r="2.6" fill="#82b862" />
+          <circle cx="13" cy="10" r="2.2" fill="#b3cb68" />
+          <circle cx="8" cy="15" r="2" fill="#aed197" />
+        </pattern>
+      </defs>
+
+      <!-- Boden -->
+      <line x1="30" y1="270" x2="410" y2="270" stroke="#9aa2a2" stroke-width="2" stroke-dasharray="4 4" />
+
+      <!-- Maßlinie oben: 25 cm -->
+      <line x1="180" y1="55" x2="180" y2="38" stroke="#9aa2a2" stroke-width="1" />
+      <line x1="260" y1="55" x2="260" y2="38" stroke="#9aa2a2" stroke-width="1" />
+      <line x1="183" y1="42" x2="257" y2="42" stroke="#525d5d" stroke-width="1.5" marker-start="url(#hs-arrow)" marker-end="url(#hs-arrow)" />
+      <text x="220" y="29" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="16" fill="#333a3a">25 cm</text>
+
+      <!-- Maßlinie links: 65 cm -->
+      <line x1="180" y1="55" x2="140" y2="55" stroke="#9aa2a2" stroke-width="1" />
+      <line x1="172" y1="263" x2="140" y2="263" stroke="#9aa2a2" stroke-width="1" />
+      <line x1="150" y1="59" x2="150" y2="259" stroke="#525d5d" stroke-width="1.5" marker-start="url(#hs-arrow)" marker-end="url(#hs-arrow)" />
+      <text x="150" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="16" fill="#333a3a" transform="rotate(-90 150 160)">65 cm</text>
+
+      <!-- Maßlinie unten: 30 cm -->
+      <line x1="172" y1="263" x2="172" y2="298" stroke="#9aa2a2" stroke-width="1" />
+      <line x1="268" y1="263" x2="268" y2="298" stroke="#9aa2a2" stroke-width="1" />
+      <line x1="175" y1="291" x2="265" y2="291" stroke="#525d5d" stroke-width="1.5" marker-start="url(#hs-arrow)" marker-end="url(#hs-arrow)" />
+      <text x="220" y="314" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="16" fill="#333a3a">30 cm</text>
+
+      <!-- Hecke -->
+      <polygon points="180,55 260,55 268,263 172,263" fill="url(#hs-leaves)" stroke="#35521c" stroke-width="3" stroke-linejoin="round" />
+
+      <!-- Hinweis: schräg -->
+      <line x1="330" y1="100" x2="266" y2="130" stroke="#6f7979" stroke-width="1.2" />
+      <text x="334" y="96" font-family="Inter, sans-serif" font-style="italic" font-size="13" fill="#3f4848">schräg, nach oben</text>
+      <text x="334" y="113" font-family="Inter, sans-serif" font-style="italic" font-size="13" fill="#3f4848">verjüngt</text>
+    </svg>
+    </button>
+    <p class="mt-4 text-center text-xs text-coal-400">Querschnitt der Hecke mit den geforderten Maßen (zum Vergrößern anklicken)</p>
+  </div>
+</div>
+
+<div class="not-prose mt-10 rounded-sm bg-poppy-500/10 px-6 py-5 ring-1 ring-poppy-500/30">
+  <p class="text-base font-semibold text-poppy-600">Nochmals der Hinweis: Wildkräuter sind mit Wurzel aus der Hecke zu entfernen!</p>
+  <p class="mt-2 text-sm text-coal-700">
+    Bei Nichtberücksichtigung wird vom Verein zu Lasten des Pächters nachgearbeitet.
+  </p>
+</div>
+
+<h2>Sommer- und Winterschnitt im Wechsel</h2>
+<p>
+  Eine gesunde Hecke braucht Licht von allen Seiten – deshalb bewährt sich die <strong>Trapezform</strong>: oben
+  schmal, unten breiter. So bleibt der Austrieb auch im unteren Bereich kräftig. Wer regelmäßig schneidet, hält
+  seine Hecke vital und formstabil:
+</p>
+<ul class="mt-4 list-disc space-y-2 pl-6 text-coal-700">
+  <li><strong>Sommerschnitt:</strong> etwas über dem alten Schnitt bleiben, damit das Grün erhalten bleibt.</li>
+  <li><strong>Winterschnitt:</strong> alle paar Jahre auf den ursprünglichen Schnitt zurücknehmen.</li>
+</ul>
+<p class="mt-4">
+  So bleiben die Pflanzen dicht, gesund und bilden über die Jahre ein schönes, gleichmäßiges Bild. Praktischer
+  Nebeneffekt: Das Schnittgut eignet sich hervorragend für den Kompost – die Mischung aus frischem Grün und leicht
+  verholzten Trieben ergibt wertvolles Material, das später als Humus wieder an die Hecke zurückkehren kann.
+</p>
+
+<div class="not-prose my-8 overflow-hidden rounded-sm card">
+  <a href="https://www.youtube.com/watch?v=B-3aaQUiKQ4" target="_blank" rel="noopener" class="group relative block">
+    {% image "gallery/heckenschnitt-video.jpg", "Videovorschau: Heckenschnitt im Kleingarten", "aspect-video w-full object-cover", "(min-width: 1024px) 768px, 100vw" %}
+    <span class="absolute inset-0 flex items-center justify-center bg-coal-950/30 transition-colors group-hover:bg-coal-950/45">
+      <span class="flex h-16 w-16 items-center justify-center rounded-sm bg-white/90 shadow-lg transition-transform group-hover:scale-105">
+        <svg class="h-7 w-7 translate-x-0.5 text-leaf-700" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+    </span>
+  </a>
+  <div class="p-6">
+    <p class="font-semibold text-leaf-800">Video: Heckenschnitt im Kleingarten</p>
+    <p class="mt-2 text-sm leading-relaxed text-coal-600">
+      Der Landesverband Westfalen und Lippe der Kleingärtner zeigt, wie sich die Trapezform mit einfachen Mitteln
+      erreichen lässt – und dass beim Schneiden manchmal das Augenmaß wichtiger ist als das Lehrbuch. Das Video
+      liegt bei YouTube – ein Klick auf das Bild öffnet es in einem neuen Tab, du verlässt damit unsere Website.
+    </p>
+  </div>
+</div>
+
+<p class="mt-8">
+  Fragen zum Heckenschnitt? Der Vorstand hilft gerne weiter, schreib einfach eine Mail an
+  <a href="mailto:{{ site.vorstandEmail }}">{{ site.vorstandEmail }}</a>.
+</p>
+
+<p class="mt-8 text-sm text-coal-500">Gut Grün – der Vorstand</p>
