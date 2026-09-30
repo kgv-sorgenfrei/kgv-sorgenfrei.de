@@ -26,6 +26,16 @@ This file collects standing conventions for any AI agent (or human) working on t
   - **Raster images** (via `{% image %}`): wrap in `<button type="button" class="group block overflow-hidden rounded-*" data-lightbox-trigger>` and add `cursor-zoom-in ... transition-transform duration-300 group-hover:scale-105` to the `{% image %}` class argument (see `src/ueber-uns.njk` Galerie section or `src/projektgarten-sanssouci.njk`).
   - **Inline `<svg>` diagrams** (e.g. `src/heckenschnitt.njk`, `src/kompostieren.njk`): wrap the `<svg>` itself in `<button type="button" data-lightbox-trigger class="block w-full cursor-zoom-in" aria-label="Schema vergrößern">`. The lightbox clones the SVG (rewriting any `id`s and their `url(#...)`/`href="#..."` references so markers/patterns/gradients don't collide with the original), and uses the SVG's `<title>` as the caption unless a `data-caption` attribute is set on the trigger.
 
+## Colors
+
+The palette is defined in `tailwind.config.js` (`leaf`, `moss`, `sun`, `poppy`, `coal`). Use these tokens, never raw hex values or Tailwind's default `yellow`/`amber`/`green` scales.
+
+- **Yellow (`sun`) — one accent tone only:** any yellow *text* (eyebrows, highlighted words like „Glück auf!“ / „Gut Grün!“, links on dark backgrounds, footer link hover) is `text-sun-400` (`#fecc00`, the logo yellow). Don't use `sun-200`/`sun-300` for text — they were unified on purpose. For link hover on dark backgrounds, keep the color and change the underline instead (`decoration-sun-500/50 hover:decoration-sun-400`).
+- **Yellow backgrounds:** buttons and solid bands use `bg-sun-400` (`.btn-primary` hovers to `bg-sun-300`). Light highlight/tip boxes and info tiles all use `bg-sun-50 ring-1 ring-sun-200` with dark (`coal`) text — not `bg-sun-100`.
+- **Green (`leaf`):** headings `text-leaf-800`, links `text-leaf-700 hover:text-leaf-800`, page header band `bg-leaf-800`, light section backgrounds `bg-leaf-50`, dividers `divide-leaf-200` / `border-leaf-200`.
+- **Neutral (`coal`):** body text `text-coal-700`, secondary text `text-coal-600`/`-500`, dark sections `bg-coal-900` with `text-coal-300` copy.
+- **Red (`poppy`):** sparingly, for warnings/alerts only.
+
 ## Styling gotcha (already fixed once — don't reintroduce)
 
 `.prose-page a` (the default styling for links inside inner-page body copy) previously overrode `.btn-primary` / `.btn-secondary` / `.btn-outline` button text color and added an unwanted underline, because the descendant selector `.prose-page a` is more specific than a single button class. This made buttons on inner pages (e.g. Honig, Über uns) nearly unreadable (dark-on-dark).
