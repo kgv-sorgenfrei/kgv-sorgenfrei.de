@@ -1,7 +1,7 @@
 ---
 title: "Kontakt"
 eyebrow: "Wir freuen uns auf dich"
-lead: "Adresse, Öffnungszeiten und Ansprechpartner im KGV Sorgenfrei."
+lead: "Öffnungszeiten, Adresse und Ansprechpartner im KGV Sorgenfrei."
 description: "Kontakt und Adresse des KGV Sorgenfrei e.V. in Herne-Wanne, Öffnungszeiten des Vereinsheims sowie Namen und Rollen des Vorstands."
 layout: layouts/page.njk
 schema:
@@ -18,41 +18,53 @@ schema:
     "addressCountry": "DE"
 ---
 
-<div class="not-prose grid gap-6 sm:grid-cols-2">
-  <div class="card p-6">
-    <h2 class="mt-0 text-xl text-leaf-800">Adresse</h2>
-    <address class="mt-3 not-italic leading-relaxed text-coal-700">
-      {{ site.fullName }}<br>
-      {% for line in site.address.lines %}{{ line }}<br>{% endfor %}
-    </address>
-    <a
-      class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-leaf-700 hover:text-leaf-800"
-      href="https://www.google.com/maps/search/?api=1&query={{ site.address.mapsQuery | urlencode }}"
-      rel="noopener"
-      target="_blank"
-    >Route planen →</a>
-  </div>
-
-  <div class="card p-6">
-    <h2 class="mt-0 text-xl text-leaf-800">Kontaktdaten</h2>
-    <ul class="mt-3 space-y-2 text-coal-700">
-      <li><span class="font-medium">1. Vorsitzender:</span> Hans-Peter Müller</li>
-      <li><span class="font-medium">Mobil:</span> <a class="text-leaf-700 hover:text-leaf-800" href="tel:{{ site.phoneChair | replace(' ', '') }}">{{ site.phoneChair }}</a></li>
-      <li><span class="font-medium">Vorstand:</span> <a class="text-leaf-700 hover:text-leaf-800" href="mailto:{{ site.vorstandEmail }}">{{ site.vorstandEmail }}</a></li>
-      <li><span class="font-medium">Allgemeine Anfragen:</span> <a class="text-leaf-700 hover:text-leaf-800" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-    </ul>
-  </div>
-</div>
-
-<h2>Öffnungszeiten Vereinsheim</h2>
-<ul class="not-prose mt-4 grid gap-3 sm:grid-cols-3">
+<h2 class="mt-0">Öffnungszeiten Vereinsheim</h2>
+<dl class="not-prose mt-4 divide-y divide-leaf-200 border-y border-leaf-200">
   {% for slot in site.openingHours %}
-  <li class="card p-5">
-    <p class="font-semibold text-coal-800">{{ slot.label }}</p>
-    <p class="mt-1 text-sm text-coal-600">{{ slot.time }}</p>
-  </li>
+  <div class="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+    <dt class="font-semibold text-coal-800">{{ slot.label }}</dt>
+    <dd class="text-coal-600 sm:text-right">{{ slot.time }}</dd>
+  </div>
   {% endfor %}
-</ul>
+</dl>
+
+<h2>So erreichst du uns</h2>
+<div class="not-prose mt-6 grid items-start gap-10 md:grid-cols-2 md:gap-12">
+  <div class="divide-y divide-leaf-200">
+    <section class="pb-8">
+      <h3 class="text-xl text-leaf-800">Adresse</h3>
+      <address class="mt-3 not-italic leading-relaxed text-coal-700">
+        {{ site.fullName }}<br>
+        {% for line in site.address.lines %}{{ line }}<br>{% endfor %}
+      </address>
+      <a
+        class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-leaf-700 hover:text-leaf-800"
+        href="https://www.google.com/maps/search/?api=1&query={{ site.address.mapsQuery | urlencode }}"
+        rel="noopener"
+        target="_blank"
+      >Route planen →</a>
+    </section>
+
+    <section class="pt-8">
+      <h3 class="text-xl text-leaf-800">Kontaktdaten</h3>
+      <ul class="mt-3 space-y-2 text-coal-700">
+        <li><span class="font-medium">1. Vorsitzender:</span> Hans-Peter Müller</li>
+        <li><span class="font-medium">Mobil:</span> <a class="text-leaf-700 hover:text-leaf-800" href="tel:{{ site.phoneChair | replace(' ', '') }}">{{ site.phoneChair }}</a></li>
+        <li><span class="font-medium">Vorstand:</span> <a class="text-leaf-700 hover:text-leaf-800" href="mailto:{{ site.vorstandEmail }}">{{ site.vorstandEmail }}</a></li>
+        <li><span class="font-medium">Allgemeine Anfragen:</span> <a class="text-leaf-700 hover:text-leaf-800" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <figure id="lageplan">
+    <button type="button" class="group relative block w-full overflow-hidden rounded-sm shadow-lg ring-1 ring-leaf-900/10" data-lightbox-trigger>
+      {% image "lageplan.jpg", "Lageplan der Gartenanlage KGV Sorgenfrei mit nummerierten Parzellen, Vereinsheim und den Eingängen Wilhelmstraße und Thießstraße", "w-full cursor-zoom-in transition-transform duration-300 group-hover:scale-105", "(min-width: 768px) 400px, 100vw", [600, 900] %}
+      <span class="pointer-events-none absolute bottom-3 right-3 rounded-full bg-white/90 p-2 text-leaf-800 shadow-md ring-1 ring-leaf-900/10 transition group-hover:bg-white" aria-hidden="true">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+      </span>
+    </button>
+  </figure>
+</div>
 
 <h2 id="vorstand">Der Vorstand</h2>
 <div class="not-prose mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
