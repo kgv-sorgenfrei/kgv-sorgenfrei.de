@@ -40,13 +40,21 @@
     "fixed inset-0 z-50 hidden items-center justify-center bg-coal-950/90 p-4 sm:p-8";
   overlay.innerHTML =
     '<button type="button" data-close class="absolute right-4 top-4 rounded-sm bg-white/10 p-2 text-white hover:bg-white/20" aria-label="Schließen"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>' +
+    '<button type="button" data-prev class="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 sm:left-4 sm:p-3" aria-label="Vorheriges Bild"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>' +
+    '<button type="button" data-next class="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 sm:right-4 sm:p-3" aria-label="Nächstes Bild"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>' +
     '<div data-content class="flex max-h-full max-w-full items-center justify-center"></div>' +
     '<p class="absolute bottom-6 left-1/2 -translate-x-1/2 max-w-[90%] rounded-sm bg-coal-950/80 px-3 py-1.5 text-center text-sm text-white/90"></p>';
   document.body.appendChild(overlay);
 
   const content = overlay.querySelector("[data-content]");
   const caption = overlay.querySelector("p");
+  const prevButton = overlay.querySelector("[data-prev]");
+  const nextButton = overlay.querySelector("[data-next]");
   let svgCloneCount = 0;
+  // Triggers sharing a parent element (e.g. a gallery grid) form one group
+  // that can be browsed with the arrow buttons, arrow keys or a swipe.
+  let group = [];
+  let groupIndex = 0;
 
   // Inline SVGs (diagrams/schematics) can define ids for markers, gradients, etc.
   // Cloning one into the overlay would duplicate those ids in the document, so
@@ -99,7 +107,11 @@
   function open(node, captionText) {
     content.innerHTML = "";
     content.appendChild(node);
-    caption.textContent = captionText || "";
+    const counter = group.length > 1 ? `${groupIndex + 1} / ${group.length}` : "";
+    caption.textContent = [counter, captionText].filter(Boolean).join(" · ");
+    caption.classList.toggle("hidden", !caption.textContent);
+    prevButton.classList.toggle("hidden", group.length < 2);
+    nextButton.classList.toggle("hidden", group.length < 2);
     overlay.classList.remove("hidden");
     overlay.classList.add("flex");
     document.body.style.overflow = "hidden";
@@ -110,6 +122,17 @@
     overlay.classList.remove("flex");
     document.body.style.overflow = "";
     content.innerHTML = "";
+    group = [];
+  }
+
+  function isOpen() {
+    return !overlay.classList.contains("hidden");
+  }
+
+  function step(delta) {
+    if (group.length < 2) return;
+    groupIndex = (groupIndex + delta + group.length) % group.length;
+    show(group[groupIndex]);
   }
 
   // The inline <img> only ever loads the small srcset candidate picked for
@@ -135,29 +158,38 @@
     return bestUrl;
   }
 
+  function show(trigger) {
+    const pictureImg = trigger.querySelector("img");
+    if (pictureImg) {
+      const picture = pictureImg.closest("picture");
+      const img = document.createElement("img");
+      img.className = "max-h-[calc(100dvh-4rem)] max-w-full rounded-sm object-contain";
+      img.src = (picture && widestSrcsetUrl(picture)) || pictureImg.currentSrc || pictureImg.src;
+      img.alt = pictureImg.alt || "";
+      open(img, pictureImg.alt);
+      return;
+    }
+
+    const svg = trigger.querySelector("svg");
+    if (svg) {
+      const title = svg.querySelector("title");
+      const wrapper = document.createElement("div");
+      wrapper.className = "max-h-[calc(100dvh-4rem)] max-w-full overflow-auto rounded-sm bg-white p-4";
+      wrapper.appendChild(cloneSvgForLightbox(svg));
+      open(wrapper, trigger.getAttribute("data-caption") || (title && title.textContent) || "");
+    }
+  }
+
   triggers.forEach((trigger) => {
     trigger.addEventListener("click", () => {
-      const pictureImg = trigger.querySelector("img");
-      if (pictureImg) {
-        const picture = pictureImg.closest("picture");
-        const img = document.createElement("img");
-        img.className = "max-h-[calc(100dvh-4rem)] max-w-full rounded-sm object-contain";
-        img.src = (picture && widestSrcsetUrl(picture)) || pictureImg.currentSrc || pictureImg.src;
-        img.alt = pictureImg.alt || "";
-        open(img, pictureImg.alt);
-        return;
-      }
-
-      const svg = trigger.querySelector("svg");
-      if (svg) {
-        const title = svg.querySelector("title");
-        const wrapper = document.createElement("div");
-        wrapper.className = "max-h-[calc(100dvh-4rem)] max-w-full overflow-auto rounded-sm bg-white p-4";
-        wrapper.appendChild(cloneSvgForLightbox(svg));
-        open(wrapper, trigger.getAttribute("data-caption") || (title && title.textContent) || "");
-      }
+      group = Array.from(trigger.parentElement.children).filter((el) => el.hasAttribute("data-lightbox-trigger"));
+      groupIndex = group.indexOf(trigger);
+      show(trigger);
     });
   });
+
+  prevButton.addEventListener("click", () => step(-1));
+  nextButton.addEventListener("click", () => step(1));
 
   overlay.addEventListener("click", (event) => {
     if (event.target === overlay || event.target.closest("[data-close]")) {
@@ -166,6 +198,20 @@
   });
 
   document.addEventListener("keydown", (event) => {
+    if (!isOpen()) return;
     if (event.key === "Escape") close();
+    if (event.key === "ArrowLeft") step(-1);
+    if (event.key === "ArrowRight") step(1);
+  });
+
+  let touchStartX = null;
+  overlay.addEventListener("touchstart", (event) => {
+    touchStartX = event.touches.length === 1 ? event.touches[0].clientX : null;
+  }, { passive: true });
+  overlay.addEventListener("touchend", (event) => {
+    if (touchStartX === null) return;
+    const deltaX = event.changedTouches[0].clientX - touchStartX;
+    touchStartX = null;
+    if (Math.abs(deltaX) > 50) step(deltaX < 0 ? 1 : -1);
   });
 })();
