@@ -39,7 +39,7 @@ module.exports = {
       summary:
         "Beliebte Heckenpflanze mit Schattenseiten: giftig für Mensch und Tier und schädlich für unser Ökosystem – dazu heimische Alternativen und die Austauschaktion des Vereins.",
       url: "/kirschlorbeer/",
-      image: "gallery/hauptweg.jpg",
+      image: "fachberatung/kirschlorbeer-vorschau.jpg",
     },
     {
       title: "Unkrautvlies",
@@ -53,7 +53,7 @@ module.exports = {
       summary:
         "Trockenheitsverträgliche Pflanzen, Bodenpflege, Bodendecker und die richtige Gießtechnik für wassersparendes Gärtnern in heißen Sommern.",
       url: "/garten-ohne-giessen/",
-      image: "gallery/parzelle.jpg",
+      image: "gallery/sanssouci-2.jpg",
     },
     {
       title: "Amphibien im Gartenteich fördern",
@@ -67,7 +67,7 @@ module.exports = {
       summary:
         "Mit der richtigen Nachkultur gibt es frisches Gemüse aus dem eigenen Beet bis in den Dezember – und oft darüber hinaus.",
       url: "/gemueseanbau-herbst-winter/",
-      image: "fachberatung/gemuesebeete.jpg",
+      image: "fachberatung/radieschen-vorschau.jpg",
     },
     {
       title: "Aufgeräumte Gärten sind für die Natur nutzlos",
