@@ -41,7 +41,7 @@ async function imageShortcode(
     urlPath: "/assets/images/optimized/",
     filenameFormat: (id, imgSrc, width, format) => {
       const name = path.basename(imgSrc, path.extname(imgSrc));
-      return `${name}-${width}w.${format}`;
+      return `${name}-${id}-${width}w.${format}`;
     },
   });
 
