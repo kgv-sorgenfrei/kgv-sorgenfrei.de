@@ -215,3 +215,54 @@
     if (Math.abs(deltaX) > 50) step(deltaX < 0 ? 1 : -1);
   });
 })();
+
+// Easter egg: the Konami code (↑ ↑ ↓ ↓ ← → ← → B A) opens the game
+// "Laubenpieper" (src/laubenpieper/) in a full-screen overlay.
+(function () {
+  const code = ["arrowup", "arrowup", "arrowdown", "arrowdown", "arrowleft", "arrowright", "arrowleft", "arrowright", "b", "a"];
+  let position = 0;
+  let overlay = null;
+
+  function close() {
+    if (!overlay) return;
+    overlay.remove();
+    overlay = null;
+    document.documentElement.style.overflow = "";
+  }
+
+  function open() {
+    overlay = document.createElement("div");
+    overlay.className = "fixed inset-0 z-[60] flex flex-col bg-black";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-label", "Laubenpieper");
+    // The game shows its own X button in its button row and asks for closing via postMessage
+    overlay.innerHTML =
+      '<iframe src="/laubenpieper/" title="Laubenpieper" allow="fullscreen; autoplay" allowfullscreen class="min-h-0 w-full flex-1 border-0"></iframe>';
+    document.body.appendChild(overlay);
+    document.documentElement.style.overflow = "hidden";
+
+    const frame = overlay.querySelector("iframe");
+    frame.addEventListener("load", () => frame.contentWindow.focus());
+    frame.focus();
+  }
+
+  window.addEventListener("message", (event) => {
+    if (event.origin === location.origin && event.data === "laubenpieper:close") close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (overlay) {
+      if (event.key === "Escape") close();
+      return;
+    }
+    const target = event.target;
+    if (target.closest && target.closest("input, textarea, select, [contenteditable]")) return;
+    const key = event.key.toLowerCase();
+    position = key === code[position] ? position + 1 : key === code[0] ? 1 : 0;
+    if (position === code.length) {
+      position = 0;
+      open();
+    }
+  });
+})();

@@ -59,3 +59,7 @@ Fix in place: `.prose-page a:not([class*="btn"])` in `src/assets/css/tailwind.cs
 ## Structure reference
 
 See [README.md](README.md) for the full folder layout, npm scripts (`build`, `build:prod`, `serve`, `serve:prod`), and SEO/accessibility notes.
+
+## Easter egg
+
+- `src/laubenpieper/` is a copy of the standalone game in `../laubenpieper` (passthrough-copied, excluded from template processing in `eleventy.config.js`). It opens in a full-screen iframe overlay when a visitor types the Konami code (↑ ↑ ↓ ↓ ← → ← → B A); the trigger lives at the end of `src/assets/js/main.js`. Make game changes in `../laubenpieper` first, then copy `index.html`, `src/` and `assets/` over.

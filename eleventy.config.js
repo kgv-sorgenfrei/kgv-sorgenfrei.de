@@ -13,6 +13,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/css/style.css");
   eleventyConfig.addPassthroughCopy("src/assets/favicons");
   eleventyConfig.addPassthroughCopy("src/assets/fonts");
+  // Easter egg game (opened via the Konami code), copied as-is, not processed as a template
+  eleventyConfig.addPassthroughCopy("src/laubenpieper");
+  eleventyConfig.ignores.add("src/laubenpieper/**");
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "src/site.webmanifest": "site.webmanifest" });
   eleventyConfig.addPassthroughCopy({ "src/.htaccess": ".htaccess" });

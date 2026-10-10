@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a290d">
+<title>Laubenpieper</title>
+<meta name="description" content="Kleingarten im Pixel-Look: säen, gießen, ernten – und Sonntag kommt der Vorstand zur Begehung.">
+<style>
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("assets/fonts/PressStart2P-Regular.ttf") format("truetype");
+    font-display: block;
+}
+:root { color-scheme: dark; }
+html, body {
+    margin: 0;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+#screen {
+    width: min(100vw, calc((100dvh - 34px) * 4 / 3));
+    height: auto;
+    aspect-ratio: 4 / 3;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    display: block;
+    cursor: pointer;
+}
+#buttons {
+    display: flex;
+    gap: 6px;
+    padding-right: max(4px, env(safe-area-inset-right));
+    height: 30px;
+}
+#buttons button {
+    font: 8px "Press Start 2P", monospace;
+    color: #fffbe8;
+    background: #1a290d;
+    border: 2px solid #52812d;
+    padding: 6px 8px;
+    cursor: pointer;
+}
+#buttons button:focus-visible { outline: 2px solid #fecc00; }
+/* embedded in a page (iframe): a close button, the button row a bit taller */
+#close { display: none; }
+.embedded #buttons { height: 36px; align-items: center; }
+.embedded #screen { width: min(100vw, calc((100dvh - 40px) * 4 / 3)); }
+.embedded #close {
+    display: block;
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    padding: 0 0 0 2px;
+}
+</style>
+</head>
+<body>
+<main id="game">
+<div id="buttons">
+    <button id="pause" type="button">PAUSE</button>
+    <button id="sound" type="button">TON AN</button>
+    <button id="full" type="button">VOLLBILD</button>
+    <button id="close" type="button" aria-label="Spiel schließen">X</button>
+</div>
+<canvas id="screen" width="640" height="480" aria-label="Laubenpieper - Spielfeld"></canvas>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
